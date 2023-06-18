@@ -4,6 +4,8 @@ Uptime Kuma Backup is a tool for backing up and restoring Uptime Kuma data.
 
 ## Walkthrough Video
 
+[![Uptime Kuma Backup Walkthrough Video](https://img.youtube.com/vi/grUB1euIwEo/0.jpg)](https://www.youtube.com/watch?v=grUB1euIwEo)
+
 ## Using Proxmox
 
 So if you're using Proxmox you need to open up ssh and run the following commands:
