@@ -67,3 +67,7 @@ sh ./backup.sh
 ```bash
 sh ./restore.sh
 ```
+
+## Need Support or Have Ideas?
+
+Join the BigBearCommunity [Discord](https://bit.ly/bbtw-community) and let us know what you think!
