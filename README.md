@@ -54,29 +54,13 @@ git clone https://github.com/bigbeartechworld/uptime-kuma-backup.git uptime-kuma
 cd uptime-kuma-backup
 ```
 
-4. Open up the backup.sh file and change the following variables:
-
-```bash
-ssh_server="user@host"
-```
-
-to your credentials
-
-5. Open up the restore.sh file and change the following variables:
-
-```bash
-ssh_server="user@host"
-```
-
-to your credentials
-
-6. Run the backup script
+4. Run the backup script
 
 ```bash
 sh ./backup.sh
 ```
 
-7. Run the restore script
+5. Run the restore script
 
 ```bash
 sh ./restore.sh

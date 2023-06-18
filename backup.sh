@@ -20,11 +20,11 @@ if [ -f "$ip_file" ]; then
     # Read the password from the file
     ip_address=$(cat "$ip_file")
 else
-    # Prompt for SSH password
+    # Prompt for SSH ip
     read -s -p "Enter SSH IP: " ip_address
     echo
 
-    # Save the password to the file
+    # Save the ip to the file
     echo "$ip_address" > "$ip_file"
 fi
 

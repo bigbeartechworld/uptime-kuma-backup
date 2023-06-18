@@ -3,9 +3,6 @@
 # Local directory where the file is located
 local_directory="./backups"
 
-# SSH server details
-ssh_server="root@192.168.1.186"
-
 # Remote directory where the file will be copied
 remote_directory="/opt/uptime-kuma/data"
 
@@ -17,14 +14,14 @@ password_file="ssh_password.txt"
 
 # Check if the ssh ip file exists
 if [ -f "$ip_file" ]; then
-    # Read the password from the file
+    # Read the ip from the file
     ip_address=$(cat "$ip_file")
 else
-    # Prompt for SSH password
+    # Prompt for SSH IP
     read -s -p "Enter SSH IP: " ip_address
     echo
 
-    # Save the password to the file
+    # Save the ip to the file
     echo "$ip_address" > "$ip_file"
 fi
 
@@ -83,7 +80,7 @@ sshpass -p "$ssh_password" ssh "$ssh_server" "rm -rf /opt/uptime-kuma/data"
 # Rsync the latest file to the SSH server with password authentication
 sshpass -p "$ssh_password" rsync -avz "./.uptime-kuma-restore/data/" "$ssh_server:$remote_directory"
 
-# Set permissions and remove node_modules and reinstall
+# Set permissions and restart the service
 sshpass -p "$ssh_password" ssh "$ssh_server" "chown -R root:root $remote_directory && cd $remote_directory && service uptime-kuma restart"
 
 # Remove the .uptime-kuma-restore directory
