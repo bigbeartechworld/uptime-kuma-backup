@@ -6,6 +6,12 @@ Uptime Kuma Backup is a tool for backing up and restoring Uptime Kuma data.
 
 [![Uptime Kuma Backup Walkthrough Video](https://img.youtube.com/vi/grUB1euIwEo/0.jpg)](https://www.youtube.com/watch?v=grUB1euIwEo)
 
+## Need Help or have an issue?
+
+Please post in the [BigBearCommunity](https://community.bigbeartechworld.com/c/big-bear-scripts/9) with your issue. Try to be detailed in your issue.
+
+If you have a feature request please post in the [BigBearCommunity](https://community.bigbeartechworld.com/c/big-bear-scripts/bigbearscript-suggestions/42).
+
 ## Using Proxmox
 
 So if you're using Proxmox you need to open up ssh and run the following commands:
@@ -67,7 +73,3 @@ sh ./backup.sh
 ```bash
 sh ./restore.sh
 ```
-
-## Need Support or Have Ideas?
-
-Join the BigBearCommunity [Discord](https://bit.ly/bbtw-community) and let us know what you think!
