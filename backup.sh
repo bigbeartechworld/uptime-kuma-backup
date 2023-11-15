@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Check for required commands
+for cmd in rsync zip sshpass; do
+    if ! command -v "$cmd" &> /dev/null; then
+        echo "Error: '$cmd' is not installed." >&2
+        exit 1
+    fi
+done
+
 # File prefix
 file_prefix="uptime_kuma_backup_"
 
@@ -44,8 +52,30 @@ else
     echo "$ssh_password" > "$password_file"
 fi
 
+export SSHPASS="$ssh_password"
+
+# Check if rsync is installed on the remote server
+if ! sshpass -e ssh "$ssh_server" command -v rsync &>/dev/null; then
+    echo "Error: 'rsync' is not installed on the remote server ($ssh_server)."
+
+    # Ask the user if they want to install rsync
+    read -p "Would you like to install rsync on the remote server? (yes/no) " response
+    if [[ "$response" == "yes" ]]; then
+        echo "Installing rsync on the remote server..."
+        sshpass -e ssh "$ssh_server" 'apt-get update && apt-get install -y rsync'
+        if [ $? -ne 0 ]; then
+            echo "Failed to install rsync on the remote server."
+            exit 1
+        fi
+        echo "rsync has been successfully installed on the remote server."
+    else
+        echo "rsync installation aborted. Exiting."
+        exit 1
+    fi
+fi
+
 # Sync the data directory from the SSH server
-sshpass -p "$ssh_password" rsync -avz "$ssh_server:/opt/uptime-kuma/data" ./
+sshpass -e rsync -avz "$ssh_server:/opt/uptime-kuma/data" ./
 
 # Zip up the data directory
 zip -r "$file_name" ./data
