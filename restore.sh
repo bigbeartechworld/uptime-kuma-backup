@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Local directory where the file is located
 local_directory="./backups"

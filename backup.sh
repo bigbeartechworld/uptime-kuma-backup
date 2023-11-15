@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # File prefix
 file_prefix="uptime_kuma_backup_"

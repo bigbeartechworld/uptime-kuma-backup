@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # File to store the SSH IP address
 ip_file="ssh_ip.txt"
